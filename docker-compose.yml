@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  scanner_service:
+    build:
+      context: ./scanner_service
+    ports:
+      - "5000:5000"
+    networks:
+      - monitoring_network
+
+  logger_service:
+    build:
+      context: ./logger_service
+    ports:
+      - "5001:5001"
+    networks:
+      - monitoring_network
+
+networks:
+  monitoring_network:
+    driver: bridge
